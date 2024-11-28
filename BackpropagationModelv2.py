@@ -47,11 +47,10 @@ class BackpropagationModelv2(BaseEstimator, ClassifierMixin):
         return softmax(x, axis=0)
 
     def bp_fit(self, X, target):
-        X = np.hstack([X, np.ones((X.shape[0], 1))])  # Add bias term to input
-        self.classes_ = np.unique(target)  # Unique classes in the target
-        is_binary = len(self.classes_) == 2  # Determine binary vs. multi-class
+        X = np.hstack([X, np.ones((X.shape[0], 1))])  
+        self.classes_ = np.unique(target)  
+        is_binary = len(self.classes_) == 2  
 
-        # One-hot encode target for multi-class; for binary, retain original 0/1 labels
         y = np.eye(len(self.classes_))[target] if not is_binary else target.reshape(-1, 1)
 
         self._initialize_weights()
