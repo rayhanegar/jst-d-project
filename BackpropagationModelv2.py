@@ -1,4 +1,66 @@
 import numpy as np
+"""
+BackpropagationModelv2 is a custom neural network classifier that uses backpropagation for training.
+Parameters
+----------
+layer_conf : list of int
+    Configuration of the neural network layers. Each integer represents the number of neurons in that layer.
+max_epoch : int, optional (default=1000)
+    Maximum number of epochs for training. Use -1 for unlimited epochs.
+max_error : float, optional (default=0.1)
+    Maximum mean squared error for stopping criteria.
+learn_rate : float, optional (default=0.5)
+    Learning rate for weight updates.
+print_per_epoch : int, optional (default=100)
+    Frequency of printing the training progress. Use -1 to disable printing.
+batch_size : int, optional (default=1)
+    Size of the mini-batches used for training.
+Attributes
+----------
+layer_conf : list of int
+    Configuration of the neural network layers.
+max_epoch : int
+    Maximum number of epochs for training.
+max_error : float
+    Maximum mean squared error for stopping criteria.
+learn_rate : float
+    Learning rate for weight updates.
+print_per_epoch : int
+    Frequency of printing the training progress.
+batch_size : int
+    Size of the mini-batches used for training.
+w : list of ndarray
+    Weights of the neural network.
+epoch : int
+    Number of epochs completed during training.
+mse : float
+    Mean squared error after the last epoch.
+classes_ : ndarray
+    Unique classes in the target variable.
+Methods
+-------
+sig(X)
+    Sigmoid activation function.
+sigd(X)
+    Derivative of the sigmoid function.
+_softmax(x)
+    Softmax activation function.
+bp_fit(X, target)
+    Train the neural network using backpropagation.
+bp_predict(X)
+    Predict the output for the given input data.
+fit(X, y)
+    Fit the model according to the given training data.
+predict(X)
+    Predict class labels for samples in X.
+score(X, y)
+    Return the mean accuracy on the given test data and labels.
+get_params(deep=True)
+    Get parameters for this estimator.
+set_params(**params)
+    Set the parameters of this estimator.
+"""
+
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.metrics import accuracy_score
